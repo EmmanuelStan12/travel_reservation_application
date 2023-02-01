@@ -9,5 +9,9 @@
         <action name="index">
             <result>/index.jsp</result>
         </action>
+        <action name="loginAction" class="actions.LoginAction">
+            <result name="success">/index.jsp</result>
+            <result name="input">/login.jsp</result>
+        </action>
     </package>
 </struts>

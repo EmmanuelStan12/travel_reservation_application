@@ -48,12 +48,12 @@ form > p {
     margin-top: 15px;
 }
 
-.form_fields > label {
+label {
     display: block;
     font-size: 0.85rem;
 }
 
-.form_fields input {
+td input {
     outline: none;
     border: none;
     border-radius: 20px;
@@ -86,4 +86,17 @@ a {
 
 form p:last-child {
     text-align: center;
+}
+
+table > tbody, tr {
+    width: 100%;
+}
+
+.tdInput {
+    width: 100%;
+}
+
+.errorMessage {
+    font-size: 0.8rem;
+    color: red;
 }
