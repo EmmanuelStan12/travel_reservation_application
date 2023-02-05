@@ -36,21 +36,6 @@ public class LoginAction extends ActionSupport {
 
     @Override
     public void validate() {
-        String emailRegex = "^(.+)@(\\S+)$";
-        String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6}$";
-        if (email == null || StringUtils.isEmpty(email)) {
-            addFieldError("email", "Email must not be empty");
-            return;
-        }
-        if (!Pattern.matches(emailRegex, email)) {
-            addFieldError("email", "Must be a valid email");
-        }
-        if (password == null || StringUtils.isEmpty(password)) {
-            addFieldError("password", "Password must not be empty");
-            return;
-        }
-        if (!Pattern.matches(passwordRegex, password)) {
-            addFieldError("password", "Must be a valid password");
-        }
+
     }
 }

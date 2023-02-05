@@ -29,15 +29,15 @@ pageEncoding="ISO-8859-1" %>
                     </p>
                     <div class="auth_field">
                         <label>Email</label>
-                        <s:textfield style="flex: 1;" cssClass="textfield" name="email" />
+                        <s:textfield style="flex: 1;" cssClass="textfield" type="email" name="email" />
                     </div>
                     <div class="auth_field">
                         <label>Password</label>
-                        <s:textfield style="flex: 1;" cssClass="textfield" name="email" />
+                        <s:textfield style="flex: 1;" cssClass="textfield" type="password" name="password" />
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
                         <s:submit cssClass="btn_submit" key="global.signin" />
-                        <a href="#">Don't have an account?</a>
+                        <a href="#">Don't have an account? Register</a>
                     </div>
                 </div>
             </s:form>

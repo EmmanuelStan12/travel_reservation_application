@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface Dao<T> {
 
-    public List<T> get();
+    public List<T> get() throws Exception;
 
-    public Integer insert(T data);
+    public Integer insert(T data) throws Exception;
 
-    public Integer delete(T data);
+    public Integer delete(T data) throws Exception;
 
-    public Integer update(T data);
+    public Integer update(T data) throws Exception;
 
     Session createSession(SessionFactory factory);
 }

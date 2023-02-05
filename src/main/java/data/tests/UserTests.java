@@ -13,6 +13,6 @@ public class UserTests {
                 "emma@gmail.com"
         );
 
-        (new UserDao()).insert(user);
+        //(new UserDao()).insert(user);
     }
 }

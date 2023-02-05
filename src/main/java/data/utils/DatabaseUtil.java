@@ -19,20 +19,16 @@ public class DatabaseUtil {
             return factory;
         } else {
             synchronized (cls) {
-                try {
-                    Configuration config = new Configuration();
-                    config.configure("hibernate.cfg.xml");
-                    config.addAnnotatedClass(User.class);
-                    Logger.log(LoggerTypes.INFO, "Hibernate Configured Successfully");
+                Configuration config = new Configuration();
+                config.configure("hibernate.cfg.xml");
+                config.addAnnotatedClass(User.class);
+                Logger.log(LoggerTypes.INFO, "Hibernate Configured Successfully");
 
-                    ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
-                    Logger.log(LoggerTypes.INFO, "Service Registry Created");
+                ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
+                Logger.log(LoggerTypes.INFO, "Service Registry Created");
 
-                    factory = config.buildSessionFactory(registry);
+                factory = config.buildSessionFactory(registry);
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
         }
         return factory;

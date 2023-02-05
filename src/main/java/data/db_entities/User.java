@@ -1,15 +1,22 @@
 package data.db_entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "user")
+@Table(
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "email")
+        }
+)
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer uid;
     private String password;
     private String firstname;
     private String lastname;
+
+    @Column(unique = true)
     private String email;
 
     public User(Integer uid, String password, String firstname, String lastname, String email) {
@@ -18,6 +25,10 @@ public class User {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
+    }
+
+    public User() {
+        
     }
 
     public String getFirstname() {
@@ -62,7 +73,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User [ id - " + uid + " firstname - " + firstname +
-                " lastname - " + lastname + " Email - " + email + " ]";
+        return "User [ id - " + uid + ", firstname - " + firstname +
+                ", lastname - " + lastname + ", Email - " + email + " ]";
     }
 }
