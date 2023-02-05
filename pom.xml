@@ -8,7 +8,7 @@
   <name>travel_reservation_application Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
-    <struts.version>6.1.1</struts.version>
+    <struts.version>2.3.37</struts.version>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -39,6 +39,11 @@
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
       <version>${log4j2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.struts</groupId>
+      <artifactId>struts2-dojo-plugin</artifactId>
+      <version>2.3.37</version>
     </dependency>
   </dependencies>
   <build>

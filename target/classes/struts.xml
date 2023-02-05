@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
-        "http://struts.apache.org/dtds/struts-2.5.dtd">
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
     <constant name="struts.devMode" value="true" />
     <constant name="struts.custom.i18n.resources" value="global" />
@@ -12,6 +12,18 @@
         <action name="loginAction" class="actions.LoginAction">
             <result name="success">/index.jsp</result>
             <result name="input">/login.jsp</result>
+        </action>
+        <action name="addReservationAction" class="actions.AddReservationAction">
+            <result name="success">/add_reservation.jsp</result>
+        </action>
+        <action name="addReservationActionDetails" class="actions.AddReservationDetailsAction">
+            <result name="success">/add_reservation_details.jsp</result>
+        </action>
+        <action name="addReservationActionTrips" class="actions.AddReservationTripsAction">
+            <result name="success">/add_reservation_trips.jsp</result>
+        </action>
+        <action name="homeAction" class="actions.HomeAction">
+            <result name="success">/home.jsp</result>
         </action>
     </package>
 </struts>

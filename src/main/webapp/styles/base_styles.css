@@ -14,15 +14,15 @@
 }
 
 body {
-    background-color: rgb(236, 236, 236);
+    background-color: rgb(247, 247, 247);
     height: 100vh;
 }
 
-main {
+main:not(.home) {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80%;
+    min-height: 100%;
 }
 
 .container {
@@ -30,6 +30,11 @@ main {
     border-radius: 20px;
     background-color: white;
     min-width: 450px;
+}
+
+.reservation_form {
+    padding: 20px;
+    background-color: white;
 }
 
 form h2 {
@@ -49,23 +54,23 @@ form > p {
 }
 
 label {
-    display: block;
     font-size: 0.85rem;
 }
 
-td input {
+input.textfield, textarea.textfield {
     outline: none;
     border: none;
     border-radius: 20px;
     background-color: rgb(240, 240, 240);
     padding: 10px 15px;
-    width: 100%;
+    flex: 1;
 }
 
 .row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
 
 a {
@@ -82,21 +87,113 @@ a {
     outline: none;
     border: none;
     box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.3);
+    height: fit-content;
+    width: fit-content;
 }
 
 form p:last-child {
     text-align: center;
 }
 
-table > tbody, tr {
-    width: 100%;
-}
-
-.tdInput {
-    width: 100%;
-}
-
 .errorMessage {
     font-size: 0.8rem;
     color: red;
+}
+
+.navbar {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 1px 5px 1px rgba(0,0,0,0.3);
+    background: white;
+}
+
+.navbar a {
+    text-decoration: none;
+}
+
+.navbar > a {
+    font-size: 1.2rem;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.navbar ul li {
+    list-style: none;
+}
+
+.home {
+    height: 100%;
+    width: 100%;
+}
+
+form.container {
+    min-width: 80%;
+    border-radius: 0px;
+}
+
+td .date input {
+    width: 30px;
+}
+
+.btn_save input {
+    display: inline-block;
+}
+
+.box {
+    padding: 20px;
+}
+
+.text_input {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    width: calc(50% - 20px);
+}
+
+form .text_input_full {
+    width: 100%;
+    background: red;
+}
+
+.text_input label {
+    flex: 0.4;
+}
+
+.box form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.service_type {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.trips {
+    width: 100%;
+}
+
+.auth_field label {
+    flex: 0.3;
+}
+
+.auth_field {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.auth_field .textfield {
+    width: 100%;
 }

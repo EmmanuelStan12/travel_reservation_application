@@ -20,13 +20,25 @@ pageEncoding="ISO-8859-1" %>
 <body>
     <main>
         <div class="container">
-            <s:form action="loginAction">
+            <s:form theme="simple" action="loginAction">
                 <h2>Login</h2>
                 <div class="form_fields">
-                    <s:textfield name="email" key="global.email" />
-                    <s:textfield name="password" key="global.password" type="password" />
-                    <s:submit cssClass="btn_submit" key="global.signin" />
-                    <a href="#">Forgot Password?</a>
+                    <p class="form_errors">
+                        <s:fielderror fieldName="email" />
+                        <s:fielderror fieldName="password" />
+                    </p>
+                    <div class="auth_field">
+                        <label>Email</label>
+                        <s:textfield style="flex: 1;" cssClass="textfield" name="email" />
+                    </div>
+                    <div class="auth_field">
+                        <label>Password</label>
+                        <s:textfield style="flex: 1;" cssClass="textfield" name="email" />
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <s:submit cssClass="btn_submit" key="global.signin" />
+                        <a href="#">Don't have an account?</a>
+                    </div>
                 </div>
             </s:form>
         </div>
