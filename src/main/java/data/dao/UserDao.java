@@ -6,6 +6,9 @@ import data.utils.DatabaseUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import utils.Logger;
+import utils.LoggerTypes;
 
 import java.util.List;
 
@@ -50,6 +53,18 @@ public class UserDao implements Dao<User> {
     @Override
     public Integer update(User data) throws Exception {
         return null;
+    }
+
+    public User getByCriteria(String criteria) {
+        Session session = createSession(DatabaseUtil.getFactory(this.getClass()));
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from user where " + criteria);
+
+        User user = (User) query.uniqueResult();
+        //Logger.log(LoggerTypes.INFO, user.toString());
+        transaction.commit();
+        session.close();
+        return user;
     }
 
     @Override

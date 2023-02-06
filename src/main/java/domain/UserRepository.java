@@ -5,6 +5,8 @@ import data.db_entities.User;
 import utils.Logger;
 import utils.LoggerTypes;
 
+import java.util.Objects;
+
 public class UserRepository {
 
     private static UserRepository repository;
@@ -23,5 +25,17 @@ public class UserRepository {
     public Integer register(User data) {
         Logger.log(LoggerTypes.INFO, data.toString());
         return UserDao.getInstance().insert(data);
+    }
+
+    public Integer login(String email, String password) throws Exception {
+        Logger.log(LoggerTypes.INFO, email + " " + password);
+        User user = UserDao.getInstance().getByCriteria("email = '" + email + "'");
+        if (user == null) {
+            throw new Exception("User does not exist");
+        }
+        if (!Objects.equals(user.getPassword(), password)) {
+            throw new Exception("Email or Password Incorrect");
+        }
+        return user.getUid();
     }
 }

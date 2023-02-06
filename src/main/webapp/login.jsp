@@ -26,6 +26,7 @@ pageEncoding="ISO-8859-1" %>
                     <p class="form_errors">
                         <s:fielderror fieldName="email" />
                         <s:fielderror fieldName="password" />
+                        <s:actionerror />
                     </p>
                     <div class="auth_field">
                         <label>Email</label>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: User
@@ -13,11 +14,15 @@
     <title>Title</title>
 </head>
 <body>
+<s:if test="#session.USER_ID==null">
+    <s:action name="login" executeResult="true"/>
+</s:if>
 <div class="navbar">
     <a href="home.jsp">Syserve Solutions</a>
     <ul>
-        <li><a href="#">Reservations</a></li>
-        <li><a href="#">Add Reservations</a></li>
+        <li><s:a action="homeAction">Reservations</s:a></li>
+        <li><s:a action="addReservationAction">Add Reservations</s:a></li>
+        <li><s:a action="logoutAction">Logout</s:a></li>
     </ul>
 </div>
 </body>
