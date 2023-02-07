@@ -1,6 +1,8 @@
 package actions;
 
 import com.opensymphony.xwork2.ActionSupport;
+import utils.Logger;
+import utils.LoggerTypes;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -158,12 +160,16 @@ public class AddReservationDetailsAction extends ActionSupport {
     public List<String> getClientNames() {
         if (clientNames == null) {
             clientNames = new ArrayList<>();
-            clientNames.add("Airtel Nigeria");
-            clientNames.add("FCMB");
             clientNames.add("Stanbic IBTC");
-            clientNames.add("Flour Mill");
-            clientNames.add("Nigerian Breweries Plc");
+            clientNames.add("Tunji");
+            clientNames.add("Union Bank");
+            clientNames.add("Wema Bank");
+            clientNames.add("Airtel Nigeria");
         }
         return clientNames;
+    }
+
+    public void fetchCreditClientContactNames() {
+        Logger.log(LoggerTypes.INFO, "Nice");
     }
 }

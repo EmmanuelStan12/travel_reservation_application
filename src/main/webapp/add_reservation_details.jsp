@@ -34,10 +34,13 @@
     </div>
     <div class="second_section">
         <div class="text_input">
-            <label>Name</label
-            <select>
-                <s:select name="clientName" headerValue="--Select Client--" headerKey="-1" list="clientNames" />
-            </select>
+            <label>Name</label>
+            <s:select
+                list="clientNames"
+                headerValue="--Select--"
+                headerKey="-1"
+                id="client_names"
+            />
         </div>
         <div class="text_input">
             <label>Contact Name</label>
