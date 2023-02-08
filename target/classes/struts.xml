@@ -5,7 +5,7 @@
 <struts>
     <constant name="struts.devMode" value="true" />
     <constant name="struts.custom.i18n.resources" value="global" />
-    <package name="basics-struts2" extends="struts-default">
+    <package name="basics-struts2" extends="json-default">
         <interceptors>
             <interceptor name="loginInterceptor" class="interceptors.LoginInterceptor" />
             <interceptor-stack name="loginStack">
@@ -42,5 +42,24 @@
         <action name="addReservationActionTrips" class="actions.AddReservationTripsAction">
             <result name="success">/add_reservation_trips.jsp</result>
         </action>
+        <action name="updateClientAction" class="actions.AddReservationDetailsAction" method="updateClient">
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">json</param>
+            </result>
+        </action>
+
     </package>
+
+<!--    <package name="json-package" extends="json-default">-->
+<!--        <interceptors>-->
+<!--            <interceptor name="loginInterceptor" class="interceptors.LoginInterceptor" />-->
+<!--            <interceptor-stack name="loginStack">-->
+<!--                <interceptor-ref name="loginInterceptor" />-->
+<!--                <interceptor-ref name="defaultStack" />-->
+<!--            </interceptor-stack>-->
+<!--        </interceptors>-->
+<!--        <default-interceptor-ref name="loginStack" />-->
+<!--    </package>-->
 </struts>

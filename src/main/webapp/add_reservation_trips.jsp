@@ -84,5 +84,4 @@
   <div class="trips">
     <label>Added Trips</label>
   </div>
-  <s:submit cssClass="btn_submit" value="Submit" name="submit" />
 </s:form>

@@ -7,8 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<s:form theme="simple" cssClass="reservation_form">
-    <div class="text_input" style="width: 100%">
+<div class="r_form" style="background-color: white; padding: 20px;">
+<s:form theme="simple">
+    <div class="text_input" style="width: 100%; margin-bottom: 10px;">
         <div class="row">
             <label>Office</label>
             <s:select headerKey="-1" name="office" headerValue="--Select Office--" list="offices" />
@@ -40,15 +41,24 @@
                 headerValue="--Select--"
                 headerKey="-1"
                 id="client_names"
+                name="clientName"
+                listKey="cid"
+                listValue="cname"
             />
         </div>
         <div class="text_input">
             <label>Contact Name</label>
             <div style="display: flex; flex-direction: column; gap: 5px; width: 100%;">
                 <div class="text_input">
-                    <s:textfield name="contactName" cssClass="textfield" />
+                    <s:textfield id="contact_name" readonly="true" name="contactName" cssClass="textfield" />
                 </div>
-                <s:select style="width: fit-content;" headerValue="--Select--" headerKey="-1" list="{'Hello', 'World'}" />
+                <s:select
+                        style="width: fit-content;"
+                        headerValue="--Select--"
+                        headerKey="-1"
+                        list="{}"
+                        id="contact_names"
+                />
             </div>
         </div>
         <div class="text_input">
@@ -71,8 +81,9 @@
         </div>
         <div class="text_input">
             <label>Approval Status</label>
-            <s:checkboxlist name="approvalStatus" list="{'Approved','Not Approved'}" />
+            <s:radio name="approvalStatus" list="{'Approved','Not Approved'}" />
         </div>
-        <s:submit cssClass="btn_submit" value="Submit" name="submit" />
     </div>
+    <script src="js/details.js"></script>
 </s:form>
+</div>

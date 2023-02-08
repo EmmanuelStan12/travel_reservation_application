@@ -1,13 +1,17 @@
 package actions;
 
+import com.google.gson.Gson;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import data.db_entities.Client;
+import data.db_entities.Employee;
+import domain.ReservationRepository;
+import org.apache.struts2.json.JSONWriter;
 import utils.Logger;
 import utils.LoggerTypes;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class AddReservationDetailsAction extends ActionSupport {
 
@@ -17,12 +21,17 @@ public class AddReservationDetailsAction extends ActionSupport {
     List<String> clientTypes;
     List<String> creditTypes;
     String date;
-    List<String> clientNames;
+    List<Client> clientNames;
+
+    List<Employee> contactNames;
     String approvalStatus, remark, email, phoneNumber, contactName, clientName, creditType;
     String clientType, owner, office;
 
+    String json;
+
     @Override
     public String execute() throws Exception {
+        clientNames = ReservationRepository.getInstance().getClients();
         return SUCCESS;
     }
 
@@ -157,19 +166,40 @@ public class AddReservationDetailsAction extends ActionSupport {
         return date;
     }
 
-    public List<String> getClientNames() {
-        if (clientNames == null) {
-            clientNames = new ArrayList<>();
-            clientNames.add("Stanbic IBTC");
-            clientNames.add("Tunji");
-            clientNames.add("Union Bank");
-            clientNames.add("Wema Bank");
-            clientNames.add("Airtel Nigeria");
-        }
+    public List<Client> getClientNames() {
         return clientNames;
     }
 
-    public void fetchCreditClientContactNames() {
-        Logger.log(LoggerTypes.INFO, "Nice");
+    public List<Employee> getContactNames() {
+        return contactNames;
+    }
+
+    public void setContactNames(List<Employee> contactNames) {
+        this.contactNames = contactNames;
+    }
+
+    public void setJson(String json) {
+        this.json = json;
+    }
+
+    public String getJson() {
+        return json;
+    }
+
+    public String updateClient() {
+        int selectedCid;
+        Map<String, Object> map = ActionContext.getContext().getParameters();
+        String[] objs = (String[]) map.get("selectedCid");
+        selectedCid = Integer.parseInt(objs[0]);
+
+        contactNames = ReservationRepository.getInstance().getEmployees(selectedCid);
+
+        Gson gson = new Gson();
+
+        Logger.log(LoggerTypes.INFO, Integer.toString(selectedCid));
+
+        this.json = gson.toJson(contactNames);
+        Logger.log(LoggerTypes.INFO, this.json);
+        return SUCCESS;
     }
 }

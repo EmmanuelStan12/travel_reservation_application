@@ -32,7 +32,7 @@ main:not(.home) {
     min-width: 450px;
 }
 
-.reservation_form {
+.r_form {
     padding: 20px;
     background-color: white;
 }

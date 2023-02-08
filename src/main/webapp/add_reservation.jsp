@@ -13,19 +13,25 @@
   <title>Add Reservation</title>
   <link rel="stylesheet" href="styles/base_styles.css" />
   <link rel="stylesheet" href="styles/reservation.css" />
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+          integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+          crossorigin="anonymous"></script>
   <sx:head />
 </head>
 <body>
   <s:include value="header.jsp" />
-  <div class="box">
-    <sx:tabbedpanel id="test" selectedTab="%{tab}">
-      <sx:div id="details" label="Details" theme="ajax">
-        <s:action name="addReservationActionDetails" executeResult="true"/>
-      </sx:div>
-      <sx:div id="trips" label="Trips" theme="ajax">
-        <s:action name="addReservationActionTrips" executeResult="true"/>
-      </sx:div>
-    </sx:tabbedpanel>
-  </div>
+  <s:form theme="simple">
+    <div class="box">
+      <sx:tabbedpanel id="test" selectedTab="%{tab}">
+        <sx:div id="details" label="Details" theme="ajax">
+          <s:action name="addReservationActionDetails" executeResult="true"/>
+        </sx:div>
+        <sx:div id="trips" label="Trips" theme="ajax">
+          <s:action name="addReservationActionTrips" executeResult="true"/>
+        </sx:div>
+      </sx:tabbedpanel>
+      <s:submit cssClass="btn_submit" value="Submit" name="submit" />
+    </div>
+  </s:form>
 </body>
 </html>

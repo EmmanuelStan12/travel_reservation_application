@@ -1,6 +1,6 @@
 package data.utils;
 
-import data.db_entities.User;
+import data.db_entities.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -22,6 +22,10 @@ public class DatabaseUtil {
                 Configuration config = new Configuration();
                 config.configure("hibernate.cfg.xml");
                 config.addAnnotatedClass(User.class);
+                config.addAnnotatedClass(Client.class);
+                config.addAnnotatedClass(Employee.class);
+                config.addAnnotatedClass(ReservationDetails.class);
+                config.addAnnotatedClass(ReservationTrip.class);
                 Logger.log(LoggerTypes.INFO, "Hibernate Configured Successfully");
 
                 ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
