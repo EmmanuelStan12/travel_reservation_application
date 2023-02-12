@@ -14,30 +14,27 @@ public class DatabaseUtil {
     private static SessionFactory factory;
 
     //Session Factory is expensive to create and should have at least one Instance
-    public static SessionFactory getFactory(Class cls) {
+    public synchronized static SessionFactory getFactory() {
         if (factory != null) {
             return factory;
         } else {
-            synchronized (cls) {
-                Configuration config = new Configuration();
-                config.configure("hibernate.cfg.xml");
-                config.addAnnotatedClass(User.class);
-                config.addAnnotatedClass(Client.class);
-                config.addAnnotatedClass(Employee.class);
-                config.addAnnotatedClass(Detail.class);
-                config.addAnnotatedClass(Trips.class);
-                config.addAnnotatedClass(Personnel.class);
-                config.addAnnotatedClass(PersonnelType.class);
-                config.addAnnotatedClass(Vehicle.class);
-                config.addAnnotatedClass(VehicleType.class);
-                Logger.log(LoggerTypes.INFO, "Hibernate Configured Successfully");
+            Configuration config = new Configuration();
+            config.configure("hibernate.cfg.xml");
+            config.addAnnotatedClass(User.class);
+            config.addAnnotatedClass(Client.class);
+            config.addAnnotatedClass(Employee.class);
+            config.addAnnotatedClass(Detail.class);
+            config.addAnnotatedClass(Trip.class);
+            config.addAnnotatedClass(Personnel.class);
+            config.addAnnotatedClass(PersonnelType.class);
+            config.addAnnotatedClass(Vehicle.class);
+            config.addAnnotatedClass(VehicleType.class);
+            Logger.log(LoggerTypes.INFO, "Hibernate Configured Successfully");
 
-                ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
-                Logger.log(LoggerTypes.INFO, "Service Registry Created");
+            ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
+            Logger.log(LoggerTypes.INFO, "Service Registry Created");
 
-                factory = config.buildSessionFactory(registry);
-
-            }
+            factory = config.buildSessionFactory(registry);
         }
         return factory;
     }

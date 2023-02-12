@@ -28,7 +28,7 @@ public class ClientEmployeeDao {
 
 
     public List<Client> getClients() {
-        Session session = createSession(DatabaseUtil.getFactory(this.getClass()));
+        Session session = createSession(DatabaseUtil.getFactory());
 
         Transaction transaction = session.beginTransaction();
         Query query = session.createQuery("from Client");
@@ -39,7 +39,7 @@ public class ClientEmployeeDao {
     }
 
     public List<Employee> getEmployeesForClient(Integer cid) {
-        Session session = createSession(DatabaseUtil.getFactory(this.getClass()));
+        Session session = createSession(DatabaseUtil.getFactory());
 
         Transaction transaction = session.beginTransaction();
         Query query = session.createQuery("from Employee e inner join Client c on e.clientID = c.cid where c.id = " + cid);

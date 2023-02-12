@@ -41,7 +41,7 @@ public class VehicleDao {
     }
 
     public List<Vehicle> getVehicles(Integer vid) {
-        Session session = createSession(DatabaseUtil.getFactory(this.getClass()));
+        Session session = createSession(DatabaseUtil.getFactory());
 
         Transaction transaction = session.beginTransaction();
         Query query = session.createQuery("from Vehicle v inner join VehicleType v2 on v.vehicleTypeID = v2.id where v.vehicleTypeID = " + vid);

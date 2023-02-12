@@ -41,7 +41,7 @@ public class PersonnelDao {
     }
 
     public List<Personnel> getPersonals(Integer pid) {
-        Session session = createSession(DatabaseUtil.getFactory(this.getClass()));
+        Session session = createSession(DatabaseUtil.getFactory());
 
         Transaction transaction = session.beginTransaction();
         Query query = session.createQuery("from Personnel p inner join PersonnelType p2 on p.personnelTypeID = p2.id where p.personnelTypeID = " + pid);

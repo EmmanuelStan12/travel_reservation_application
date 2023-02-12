@@ -36,7 +36,7 @@ public class UserDao implements Dao<User> {
 
     @Override
     public Integer insert(User data) {
-        Session session = createSession(DatabaseUtil.getFactory(this.getClass()));
+        Session session = createSession(DatabaseUtil.getFactory());
 
         Transaction transaction = session.beginTransaction();
         Integer status = (Integer) session.save(data);
