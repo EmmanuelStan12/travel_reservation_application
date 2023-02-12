@@ -20,7 +20,6 @@
 </head>
 <body>
   <s:include value="header.jsp" />
-  <s:form theme="simple">
     <div class="box">
       <sx:tabbedpanel id="test" selectedTab="%{tab}">
         <sx:div id="details" label="Details" theme="ajax">
@@ -30,8 +29,10 @@
           <s:action name="addReservationActionTrips" executeResult="true"/>
         </sx:div>
       </sx:tabbedpanel>
-      <s:submit cssClass="btn_submit" value="Submit" name="submit" />
+      <button class="btn_submit" type="button" id="add_reservation_btn">Submit</button>
     </div>
-  </s:form>
+  <script src="js/trips.js"></script>
+  <script src="js/details.js"></script>
+  <script src="js/add_reservation.js"></script>
 </body>
 </html>

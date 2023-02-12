@@ -21,7 +21,7 @@
     <a href="home.jsp">Syserve Solutions</a>
     <ul>
         <li><s:a action="homeAction">Reservations</s:a></li>
-        <li><s:a action="addReservationAction">Add Reservations</s:a></li>
+        <li><s:a action="addReservation">Add Reservations</s:a></li>
         <li><s:a action="logoutAction">Logout</s:a></li>
     </ul>
 </div>

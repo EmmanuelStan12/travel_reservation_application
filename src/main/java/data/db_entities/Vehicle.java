@@ -14,6 +14,15 @@ public class Vehicle {
     @Column(name = "vehicle_type_id")
     private Integer vehicleTypeID;
 
+    public Vehicle() {
+    }
+
+    public Vehicle(Integer vid, String name, Integer vehicleTypeID) {
+        this.vid = vid;
+        this.name = name;
+        this.vehicleTypeID = vehicleTypeID;
+    }
+
     public Integer getVid() {
         return vid;
     }

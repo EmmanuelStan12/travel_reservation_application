@@ -14,6 +14,13 @@ public class PersonnelType {
 
     private String name;
 
+    public PersonnelType(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public PersonnelType() {}
+
     public Integer getId() {
         return id;
     }

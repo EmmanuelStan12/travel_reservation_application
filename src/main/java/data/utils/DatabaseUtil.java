@@ -24,8 +24,12 @@ public class DatabaseUtil {
                 config.addAnnotatedClass(User.class);
                 config.addAnnotatedClass(Client.class);
                 config.addAnnotatedClass(Employee.class);
-                config.addAnnotatedClass(ReservationDetails.class);
-                config.addAnnotatedClass(ReservationTrip.class);
+                config.addAnnotatedClass(Detail.class);
+                config.addAnnotatedClass(Trips.class);
+                config.addAnnotatedClass(Personnel.class);
+                config.addAnnotatedClass(PersonnelType.class);
+                config.addAnnotatedClass(Vehicle.class);
+                config.addAnnotatedClass(VehicleType.class);
                 Logger.log(LoggerTypes.INFO, "Hibernate Configured Successfully");
 
                 ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();

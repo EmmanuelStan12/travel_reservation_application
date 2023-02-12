@@ -8,29 +8,36 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="r_form" style="background-color: white; padding: 20px;">
-<s:form theme="simple">
+<s:form theme="simple" id="detail_form">
+    <p style="color: red; font-size: 12px;" id="error_field"></p>
     <div class="text_input" style="width: 100%; margin-bottom: 10px;">
         <div class="row">
             <label>Office</label>
-            <s:select headerKey="-1" name="office" headerValue="--Select Office--" list="offices" />
+            <s:select
+                    headerKey="-1"
+                    name="office"
+                    headerValue="--Select Office--"
+                    list="offices"
+                    id="offices"
+            />
         </div>
         <div class="row">
             <label>Owner</label>
-            <s:select headerKey="0" name="owner" list="owners" />
+            <s:select id="owners" headerKey="0" name="owner" list="owners" />
         </div>
     </div>
     <div class="first_section">
         <div class="compact_row">
             <label>Client type</label>
-            <s:radio label="Client type" name="clientType" list="clientTypes" />
+            <s:radio id="client_type" name="clientType" list="clientTypes" />
         </div>
         <div class="compact_row">
             <label>Credit type</label>
-            <s:radio name="creditType" list="creditTypes" />
+            <s:radio id="credit_type" name="creditType" list="creditTypes" />
         </div>
         <div class="compact_row date_row">
             <label>Date: </label>
-            <s:textfield label="Date" cssClass="textfield" readonly="true" name="date" />
+            <s:textfield id="date" cssClass="textfield" readonly="true" name="date" />
         </div>
     </div>
     <div class="second_section">
@@ -63,27 +70,29 @@
         </div>
         <div class="text_input">
             <label>Email</label>
-            <s:textfield label="Email" type="email" name="email" cssClass="textfield" />
+            <input type="email" name="email" id="detailEmail" required class="textfield" />
         </div>
         <div class="text_input">
             <label>Phone number</label>
-            <s:textfield label="Phone number" type="number" name="phoneNumber" cssClass="textfield" />
+            <input required id="detailPhoneNumber" type="number" name="phoneNumber" class="textfield" />
         </div>
         <div class="text_input">
             <label>Remark/Reason</label>
-            <s:textfield label="Remark/Reason" type="text" name="remark" cssClass="textfield" />
+            <input required id="remark" type="text" name="remark" class="textfield" />
         </div>
     </div>
     <div class="fourth_section">
         <div class="">
             <label>Status</label>
-            <s:select list="{'Submitted'}" name="status" label="Status" />
+            <s:select id="status" list="{'Submitted'}" name="status" label="Status" />
         </div>
         <div class="text_input">
             <label>Approval Status</label>
-            <s:radio name="approvalStatus" list="{'Approved','Not Approved'}" />
+            <input type="radio" name="approved" id="approved">
+            <label for="approved">Approved</label>
+            <input type="radio" name="notApproved" id="notApproved">
+            <label for="notApproved">Not Approved</label>
         </div>
     </div>
-    <script src="js/details.js"></script>
 </s:form>
 </div>

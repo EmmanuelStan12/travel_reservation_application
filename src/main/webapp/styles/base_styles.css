@@ -116,7 +116,9 @@ form p:last-child {
 }
 
 .navbar > a {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    text-decoration: underline;
+    color: var(--primary-color);
 }
 
 .navbar ul {
@@ -127,6 +129,12 @@ form p:last-child {
 
 .navbar ul li {
     list-style: none;
+}
+
+.navbar ul li a {
+    font-size: 0.8rem;
+    text-decoration: underline;
+    color: var(--primary-color);
 }
 
 .home {

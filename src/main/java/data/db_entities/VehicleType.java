@@ -14,6 +14,14 @@ public class VehicleType {
 
     private String name;
 
+    public VehicleType(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public VehicleType() {
+    }
+
     public Integer getId() {
         return id;
     }

@@ -14,6 +14,15 @@ public class Personnel {
     @Column(name = "personnel_type_id")
     private Integer personnelTypeID;
 
+    public Personnel(Integer pid, String name, Integer personnelTypeID) {
+        this.pid = pid;
+        this.name = name;
+        this.personnelTypeID = personnelTypeID;
+    }
+
+    public Personnel() {
+    }
+
     public Integer getPid() {
         return pid;
     }

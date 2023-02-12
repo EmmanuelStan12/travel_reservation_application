@@ -48,3 +48,29 @@
     display: inline-block;
     width: fit-content;
 }
+
+.trip_items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+.trip_item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(0, 89, 255, 0.43);
+    padding: 10px 15px;
+}
+
+.trip_item p {
+    font-size: 14px;
+}
+
+.trip_item p span {
+    font-size: 12px;
+    font-weight: 400;
+    font-style: italic;
+}

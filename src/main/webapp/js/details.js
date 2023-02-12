@@ -36,3 +36,12 @@ function updateContactNames(contacts) {
 function createContact(contact) {
     return `<option value="${contact.id}">${contact.name}</option>`;
 }
+
+$('#detail_form').onsubmit(function (event) {
+    event.preventDefault();
+    console.log('Good')
+});
+
+$('#add_reservation_btn').click(function () {
+
+})

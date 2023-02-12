@@ -1,13 +1,12 @@
 package data.dao;
 
-import data.db_entities.ReservationTrip;
 import data.utils.Dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class ReservationTripsDao implements Dao<ReservationTrip> {
+public class ReservationTripsDao implements Dao<Trips> {
 
     private static ReservationTripsDao instance;
     public synchronized static ReservationTripsDao getInstance() {
@@ -18,22 +17,22 @@ public class ReservationTripsDao implements Dao<ReservationTrip> {
     }
 
     @Override
-    public List<ReservationTrip> get() throws Exception {
+    public List<Trips> get() throws Exception {
         return null;
     }
 
     @Override
-    public Integer insert(ReservationTrip data) throws Exception {
+    public Integer insert(Trips data) throws Exception {
         return null;
     }
 
     @Override
-    public Integer delete(ReservationTrip data) throws Exception {
+    public Integer delete(Trips data) throws Exception {
         return null;
     }
 
     @Override
-    public Integer update(ReservationTrip data) throws Exception {
+    public Integer update(Trips data) throws Exception {
         return null;
     }
 
