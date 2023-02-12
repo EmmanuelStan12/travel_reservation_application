@@ -1,16 +1,34 @@
 package data.db_entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Detail {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
+    @Column(name = "detail_id")
     private Integer id;
+
+    @OneToMany(mappedBy = "detail")
+    private List<Trip> trips;
+
+    @ManyToOne
+    private User user;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
+
     private String owner;
     private String office;
     private String clientType;
@@ -23,6 +41,58 @@ public class Detail {
     private String remark;
     private String status;
     private Boolean isApproved;
+
+    public Detail() {
+    }
+
+    public Detail(Integer id, List<Trip> trips, String owner, String office, String clientType, String creditType, String date, String name, String contactName, String email, String phoneNumber, String remark, String status, Boolean isApproved) {
+        this.id = id;
+        this.trips = trips;
+        this.owner = owner;
+        this.office = office;
+        this.clientType = clientType;
+        this.creditType = creditType;
+        this.date = date;
+        this.name = name;
+        this.contactName = contactName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.remark = remark;
+        this.status = status;
+        this.isApproved = isApproved;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public List<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
+    }
 
     public Integer getId() {
         return id;
@@ -130,8 +200,9 @@ public class Detail {
 
     @Override
     public String toString() {
-        return "ReservationDetails{" +
+        return "Detail{" +
                 "id=" + id +
+                ", trip=" + trips +
                 ", owner='" + owner + '\'' +
                 ", office='" + office + '\'' +
                 ", clientType='" + clientType + '\'' +

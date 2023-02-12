@@ -31,7 +31,24 @@ public class UserDao implements Dao<User> {
 
     @Override
     public List<User> get() throws Exception {
-        return null;
+        Session session = createSession(DatabaseUtil.getFactory());
+
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from user");
+        List<User> users = query.list();
+        transaction.commit();
+        session.close();
+        return users;
+    }
+
+    public User get(Integer id) throws Exception {
+        Session session = createSession(DatabaseUtil.getFactory());
+
+        Transaction transaction = session.beginTransaction();
+        User user = session.get(User.class, id);
+        transaction.commit();
+        session.close();
+        return user;
     }
 
     @Override
@@ -56,7 +73,7 @@ public class UserDao implements Dao<User> {
     }
 
     public User getByCriteria(String criteria) {
-        Session session = createSession(DatabaseUtil.getFactory(this.getClass()));
+        Session session = createSession(DatabaseUtil.getFactory());
         Transaction transaction = session.beginTransaction();
         Query query = session.createQuery("from user where " + criteria);
 
@@ -69,6 +86,6 @@ public class UserDao implements Dao<User> {
 
     @Override
     public Session createSession(SessionFactory factory) {
-        return factory.getCurrentSession();
+        return factory.openSession();
     }
 }

@@ -31,7 +31,12 @@
       </sx:tabbedpanel>
       <button class="btn_submit" type="button" id="add_reservation_btn">Submit</button>
     </div>
-  <script src="js/trips.js"></script>
+    <div id="overlay">
+      <div class="cv-spinner">
+        <span class="spinner"></span>
+      </div>
+    </div>
+  <script src="js/trip.js"></script>
   <script src="js/details.js"></script>
   <script src="js/add_reservation.js"></script>
 </body>

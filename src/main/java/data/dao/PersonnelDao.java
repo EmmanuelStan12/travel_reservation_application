@@ -30,7 +30,7 @@ public class PersonnelDao {
 
 
     public List<PersonnelType> getPersonnelTypes() {
-        Session session = createSession(DatabaseUtil.getFactory(this.getClass()));
+        Session session = createSession(DatabaseUtil.getFactory());
 
         Transaction transaction = session.beginTransaction();
         Query query = session.createQuery("from PersonnelType ");
@@ -61,7 +61,7 @@ public class PersonnelDao {
     }
 
     public <T> Integer insert(T data) {
-        Session session = createSession(DatabaseUtil.getFactory(this.getClass()));
+        Session session = createSession(DatabaseUtil.getFactory());
 
         Transaction transaction = session.beginTransaction();
         Integer status = (Integer) session.save(data);

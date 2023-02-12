@@ -1,7 +1,31 @@
 package data.db_entities;
 
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
 public class Trip {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "trip_id")
+    private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name="detail_id", nullable=false)
+    private Detail detail;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
 
     private String passengerName;
 
@@ -42,28 +66,15 @@ public class Trip {
     public Trip() {
     }
 
-    public Trip(
-            String passengerName,
-            Integer noOfPassengers,
-            String passengerEmail,
-            String passengerPhoneNumber,
-            String departure, String destination,
-            String possibleStops,
-            String vehicleCategory,
-            String vehicleType,
-            String serviceType,
-            Integer noOfDays,
-            Integer pricePerDay,
-            String additionalInformation,
-            String personnelType,
-            String personnel,
-            String vehicle,
-            Boolean isResourceAvailable
-    ) {
+    public Trip(Integer id, Detail detail, Date createdAt, Date updatedAt, String passengerName, Integer noOfPassengers, String email, String phoneNumber, String departure, String destination, String possibleStops, String vehicleCategory, String vehicleType, String serviceType, Integer noOfDays, Integer pricePerDay, String additionalInformation, String personnelType, String personnel, String vehicle, Boolean isResourceAvailable, Integer totalAmount) {
+        this.id = id;
+        this.detail = detail;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
         this.passengerName = passengerName;
         this.noOfPassengers = noOfPassengers;
-        this.email = passengerEmail;
-        this.phoneNumber = passengerPhoneNumber;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
         this.departure = departure;
         this.destination = destination;
         this.possibleStops = possibleStops;
@@ -77,6 +88,39 @@ public class Trip {
         this.personnel = personnel;
         this.vehicle = vehicle;
         this.isResourceAvailable = isResourceAvailable;
+        this.totalAmount = totalAmount;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Detail getDetail() {
+        return detail;
+    }
+
+    public void setDetail(Detail detail) {
+        this.detail = detail;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public String getPassengerName() {
@@ -95,20 +139,20 @@ public class Trip {
         this.noOfPassengers = noOfPassengers;
     }
 
-    public String getPassengerEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setPassengerEmail(String passengerEmail) {
-        this.email = passengerEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getPassengerPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPassengerPhoneNumber(String passengerPhoneNumber) {
-        this.phoneNumber = passengerPhoneNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getDeparture() {
@@ -216,31 +260,10 @@ public class Trip {
     }
 
     public Integer getTotalAmount() {
-        totalAmount = noOfDays * pricePerDay;
         return totalAmount;
     }
 
-    @Override
-    public String toString() {
-        return "Trip{" +
-                "passengerName='" + passengerName + '\'' +
-                ", noOfPassengers=" + noOfPassengers +
-                ", passengerEmail='" + email + '\'' +
-                ", passengerPhoneNumber='" + phoneNumber + '\'' +
-                ", departure='" + departure + '\'' +
-                ", destination='" + destination + '\'' +
-                ", possibleStops='" + possibleStops + '\'' +
-                ", vehicleCategory='" + vehicleCategory + '\'' +
-                ", vehicleType='" + vehicleType + '\'' +
-                ", serviceType='" + serviceType + '\'' +
-                ", noOfDays=" + noOfDays +
-                ", pricePerDay=" + pricePerDay +
-                ", additionalInformation=" + additionalInformation +
-                ", personnelType='" + personnelType + '\'' +
-                ", personnel='" + personnel + '\'' +
-                ", vehicle='" + vehicle + '\'' +
-                ", isResourceAvailable=" + isResourceAvailable +
-                ", totalAmount=" + totalAmount +
-                '}';
+    public void setTotalAmount(Integer totalAmount) {
+        this.totalAmount = totalAmount;
     }
 }

@@ -38,23 +38,23 @@ public class UserTests {
 //        types.add("Third Party");
         Random random = new Random();
 
-        List<PersonnelType> personnelTypes = PersonnelDao.getInstance().getPersonnelTypes();
-
-        for (PersonnelType type : personnelTypes) {
-            for (int i = 0; i < 10; i++) {
-                Personnel p = new Personnel(null, type.getName()+"_"+i, type.getId());
-                PersonnelDao.getInstance().insert(p);
-            }
-        }
-
-        List<VehicleType> vehicleTypes = VehicleDao.getInstance().getVehicleTypes();
-
-        for (VehicleType type : vehicleTypes) {
-            for (int i = 0; i < 10; i++) {
-                Vehicle v = new Vehicle(null, type.getName()+"_"+i, type.getId());
-                PersonnelDao.getInstance().insert(v);
-            }
-        }
+//        List<PersonnelType> personnelTypes = PersonnelDao.getInstance().getPersonnelTypes();
+//
+//        for (PersonnelType type : personnelTypes) {
+//            for (int i = 0; i < 10; i++) {
+//                Personnel p = new Personnel(null, type.getName()+"_"+i, type.getId());
+//                PersonnelDao.getInstance().insert(p);
+//            }
+//        }
+//
+//        List<VehicleType> vehicleTypes = VehicleDao.getInstance().getVehicleTypes();
+//
+//        for (VehicleType type : vehicleTypes) {
+//            for (int i = 0; i < 10; i++) {
+//                Vehicle v = new Vehicle(null, type.getName()+"_"+i, type.getId());
+//                PersonnelDao.getInstance().insert(v);
+//            }
+//        }
 
         //(new UserDao()).insert(user);
 
@@ -66,6 +66,8 @@ public class UserTests {
 //
 //
 //        Logger.log(LoggerTypes.INFO, Arrays.toString(clients.toArray()));
+
+
 
     }
 }

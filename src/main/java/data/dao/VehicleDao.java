@@ -30,7 +30,7 @@ public class VehicleDao {
 
 
     public List<VehicleType> getVehicleTypes() {
-        Session session = createSession(DatabaseUtil.getFactory(this.getClass()));
+        Session session = createSession(DatabaseUtil.getFactory());
 
         Transaction transaction = session.beginTransaction();
         Query query = session.createQuery("from VehicleType ");

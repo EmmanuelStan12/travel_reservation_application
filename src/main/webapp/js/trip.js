@@ -116,7 +116,7 @@ function onCreateTrip() {
     const isResourceAvailable = $('#isResourceAvailable').is(':checked')
 
     const trip = {
-        id: Date.now(),
+        _idx: Date.now(),
         passengerName,
         noOfPassengers,
         phoneNumber,
@@ -144,7 +144,7 @@ function onCreateTrip() {
 
 function createTrip(trip) {
     return `
-        <div class="trip_item" id="${trip.id}">
+        <div class="trip_item" id="${trip._idx}">
             <p>Passenger name: <span>${trip.passengerName}</span></p>
             <p>Email: <span>${trip.email}</span></p>
             <p>Number of Passengers: <span>${trip.noOfPassengers}</span></p>
@@ -153,13 +153,13 @@ function createTrip(trip) {
             <p>Price per day: <span>${trip.pricePerDay}</span></p>
             <p>No of days: <span>${trip.noOfDays}</span></p>
             <p>Total Amount: <span>${trip.totalAmount}</span></p>
-            <button onclick="deleteItem(${trip.id})" id="${trip.id}" type="button" class="btn_submit btn_save">Delete</button>
+            <button onclick="deleteItem(${trip._idx})" id="${trip._idx}" type="button" class="btn_submit btn_save">Delete</button>
         </div>
     `;
 }
 
 function deleteItem(tripId) {
-    const index = trips.findIndex((trip) => trip.id = tripId)
+    const index = trips.findIndex((trip) => trip._idx == tripId)
     trips[index] = null
     updateTripItems()
 }

@@ -1,6 +1,7 @@
 package data.db_entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "user")
 @Table(
@@ -19,6 +20,9 @@ public class User {
     @Column(unique = true)
     private String email;
 
+    @OneToMany(mappedBy = "user")
+    private List<Detail> details;
+
     public User(Integer uid, String password, String firstname, String lastname, String email) {
         this.uid = uid;
         this.password = password;
@@ -29,6 +33,14 @@ public class User {
 
     public User() {
         
+    }
+
+    public List<Detail> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<Detail> details) {
+        this.details = details;
     }
 
     public String getFirstname() {

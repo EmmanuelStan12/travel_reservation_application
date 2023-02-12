@@ -47,6 +47,7 @@ $('#add_reservation_btn').click(function () {
 
 function submitForm(detail) {
     console.log(detail, trips);
+    $("#overlay").fadeIn(300);
     const data = {
         "data": [JSON.stringify(detail), JSON.stringify(trips)]
     }
@@ -57,10 +58,12 @@ function submitForm(detail) {
         dataType: 'json',
         contentType:"application/json;charset=utf-8",
         success: function (data) {
-            console.log(data)
+            window.location.replace("/homeAction");
         },
         error: function (err) {
             console.log(err)
         }
-    })
+    }).done(function() {
+        $("#overlay").fadeOut(300);
+    });
 }

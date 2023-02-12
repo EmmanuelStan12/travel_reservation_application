@@ -5,6 +5,7 @@ import data.db_entities.User;
 import utils.Logger;
 import utils.LoggerTypes;
 
+import java.util.List;
 import java.util.Objects;
 
 public class UserRepository {
@@ -37,5 +38,17 @@ public class UserRepository {
             throw new Exception("Email or Password Incorrect");
         }
         return user.getUid();
+    }
+
+    public List<User> getOwners() throws Exception {
+        List<User> users = UserDao.getInstance().get();
+        for (User user: users) {
+            user.setPassword(null);
+        }
+        return users;
+    }
+
+    public User getByID(Integer id) throws Exception {
+        return UserDao.getInstance().get(id);
     }
 }

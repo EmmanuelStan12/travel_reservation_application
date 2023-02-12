@@ -1,6 +1,7 @@
 package domain;
 
 import data.dao.ClientEmployeeDao;
+import data.dao.DetailDao;
 import data.dao.PersonnelDao;
 import data.dao.VehicleDao;
 import data.db_entities.*;
@@ -42,5 +43,10 @@ public class ReservationRepository {
 
     public List<Personnel> getPersonals(Integer pid) {
         return PersonnelDao.getInstance().getPersonals(pid);
+    }
+
+    public Integer insertReservation(Detail detail, List<Trip> trips) {
+        detail.setTrips(trips);
+        return DetailDao.getInstance().insert(detail, trips);
     }
 }
