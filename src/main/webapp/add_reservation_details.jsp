@@ -23,7 +23,14 @@
         </div>
         <div class="row">
             <label>Owner</label>
-            <s:select id="owners" headerKey="0" name="owner" list="owners" />
+            <s:select
+                    id="owners"
+                    headerKey="0"
+                    name="owner"
+                    list="owners"
+                    listValue="firstname + ' ' + lastname"
+                    listKey="uid"
+            />
         </div>
     </div>
     <div class="first_section">
@@ -84,13 +91,13 @@
     <div class="fourth_section">
         <div class="">
             <label>Status</label>
-            <s:select id="status" list="{'Submitted'}" name="status" label="Status" />
+            <s:select id="status" list="{'Submitted', 'Not Submitted'}" name="status" label="Status" />
         </div>
         <div class="text_input">
             <label>Approval Status</label>
             <input type="radio" name="approved" id="approved">
             <label for="approved">Approved</label>
-            <input type="radio" name="notApproved" id="notApproved">
+            <input type="radio" name="approved" id="notApproved">
             <label for="notApproved">Not Approved</label>
         </div>
     </div>

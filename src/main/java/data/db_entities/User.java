@@ -20,7 +20,7 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Detail> details;
 
     public User(Integer uid, String password, String firstname, String lastname, String email) {

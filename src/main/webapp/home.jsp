@@ -14,7 +14,18 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="styles/base_styles.css" />
-    <link rel="stylesheet" href="styles/home_styles.css" />
+    <link rel="stylesheet" href="styles/home.css" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+            crossorigin="anonymous"></script>
+    <style type="text/css">
+        .show {
+            display: block;
+        }
+        th, td {
+            padding: 10px;
+        }
+    </style>
 </head>
 <sx:head />
 <body>
@@ -27,17 +38,17 @@
     </sx:tabbedpanel>
     <div class="list">
         <div class="list_first_section">
-            <s:submit theme="simple" cssClass="btn_submit btn_compact" value="First" />
-            <s:a theme="simple" href="#">1</s:a>
-            <s:a theme="simple" href="#">2</s:a>
-            <s:submit theme="simple" cssClass="btn_submit btn_compact" value="Next" />
-            <s:submit theme="simple" cssClass="btn_submit btn_compact" value="Last" />
-            <p class="list_desc">Displaying 1 - 20 Of 205</p>
+            <button class="btn_submit btn_compact" type="button" id="first">First</button>
+            <div id="pages" style="display: flex; gap: 10px;">
+            </div>
+            <button class="btn_submit btn_compact" type="button" id="next">Next</button>
+            <button class="btn_submit btn_compact" type="button" id="last">Last</button>
+            <p class="list_desc"></p>
         </div>
         <div class="list_main_section">
             <table class="list_table" cellpadding="5" cellspacing="1" align="center">
                 <tbody>
-                <tr class="list_header">
+                    <tr class="list_header">
                     <th scope="col">
                         <p>No</p>
                     </th>
@@ -57,45 +68,22 @@
                         <p>Status</p>
                     </th>
                     <th scope="col">
-                        <p>Task</p>
+                        <p>CreatedAt</p>
                     </th>
-                    <th width="10%" height="5" colspan="3" class="bgtable" scope="col"></th>
-                </tr>
-                <tr align="center" class="list_entry">
-                    <td>
-                        0000952
-                    </td>
-                    <td>
-                        04/02/2023
-                    </td>
-                    <td>
-                        Abuja Office
-                    </td>
-                    <td>Admin</td>
-                    <td align="center" style="padding: 0;">
-                        04/02/2023 12:39 AM : Garki -&gt; Wuse
-                    </td>
-                    <td>
-                        Submitted
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                        <div align="center">
-                            <a href="/reservation/SetUpForViewOrUpdate.do?reservation.id=952&amp;operation=VIEW" class="hintanchor" onmouseover="showhint('View', this, event, '30px')"><img src="/images/view.gif" width="16" height="15" align="absmiddle" border="false"></a>
-                        </div>
-                    </td>
-                    <td>
-                        <div align="center">
-                            <a href="/reservation/SetUpForViewOrUpdate.do?reservation.id=952&amp;operation=EDIT" class="hintanchor" onmouseover="showhint('Edit', this, event, '30px')"><img src="/images/edit.gif" width="16" height="15" align="absmiddle" border="false"></a>
-                        </div>
-                    </td>
+                    <th width="10%" height="5" colspan="3" class="bgtable" scope="col">
+                        <p>Total Amount</p>
+                    </th>
                 </tr>
                 </tbody>
             </table>
         </div>
+        <div class="overlay">
+            <div class="cv-spinner">
+                <span class="spinner"></span>
+            </div>
+        </div>
     </div>
 </main>
-<script src="js/home.js"></script>
+<script src="js/h.js"></script>
 </body>
 </html>

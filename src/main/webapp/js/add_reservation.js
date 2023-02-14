@@ -46,8 +46,8 @@ $('#add_reservation_btn').click(function () {
 });
 
 function submitForm(detail) {
+    document.querySelector('.overlay').classList.add('show');
     console.log(detail, trips);
-    $("#overlay").fadeIn(300);
     const data = {
         "data": [JSON.stringify(detail), JSON.stringify(trips)]
     }
@@ -58,12 +58,12 @@ function submitForm(detail) {
         dataType: 'json',
         contentType:"application/json;charset=utf-8",
         success: function (data) {
-            window.location.replace("/homeAction");
+            window.location.replace("homeAction");
         },
         error: function (err) {
             console.log(err)
         }
     }).done(function() {
-        $("#overlay").fadeOut(300);
+        document.querySelector('.overlay').classList.remove('show');
     });
 }

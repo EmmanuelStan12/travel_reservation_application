@@ -80,6 +80,14 @@
             </result>
         </action>
 
+        <action name="loadReservations" class="actions.HomeAction" method="loadReservations">
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">reservationJson</param>
+            </result>
+        </action>
+
     </package>
 
 <!--    <package name="json-package" extends="json-default">-->

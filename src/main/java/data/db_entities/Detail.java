@@ -15,7 +15,7 @@ public class Detail {
     @Column(name = "detail_id")
     private Integer id;
 
-    @OneToMany(mappedBy = "detail")
+    @OneToMany(mappedBy = "detail", fetch = FetchType.EAGER)
     private List<Trip> trips;
 
     @ManyToOne

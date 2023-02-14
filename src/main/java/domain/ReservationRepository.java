@@ -1,11 +1,10 @@
 package domain;
 
-import data.dao.ClientEmployeeDao;
-import data.dao.DetailDao;
-import data.dao.PersonnelDao;
-import data.dao.VehicleDao;
+import data.dao.*;
 import data.db_entities.*;
+import utils.Operator;
 
+import java.util.Date;
 import java.util.List;
 
 public class ReservationRepository {
@@ -48,5 +47,35 @@ public class ReservationRepository {
     public Integer insertReservation(Detail detail, List<Trip> trips) {
         detail.setTrips(trips);
         return DetailDao.getInstance().insert(detail, trips);
+    }
+
+    public ReservationResult getTrips(Integer perPage, Integer page) {
+        ReservationResult result = TripDao.getInstance().get(perPage, page, "");
+        for (Trip trip: result.getTrips()) {
+            trip.getDetail().setTrips(null);
+            trip.getDetail().getUser().setDetails(null);
+            trip.getDetail().getUser().setPassword(null);
+        }
+        return result;
+    }
+
+    public ReservationResult getTrips(Integer perPage, Integer page, String query) {
+        ReservationResult result = TripDao.getInstance().get(perPage, page - 1, query);
+        for (Trip trip: result.getTrips()) {
+            trip.getDetail().setTrips(null);
+            trip.getDetail().getUser().setDetails(null);
+            trip.getDetail().getUser().setPassword(null);
+        }
+        return result;
+    }
+
+    public ReservationResult getTrips(Integer perPage, Integer page, String query, Date date, Operator operator) {
+        ReservationResult result = TripDao.getInstance().get(perPage, page + 1, query,date, operator);
+        for (Trip trip: result.getTrips()) {
+            trip.getDetail().setTrips(null);
+            trip.getDetail().getUser().setDetails(null);
+            trip.getDetail().getUser().setPassword(null);
+        }
+        return result;
     }
 }

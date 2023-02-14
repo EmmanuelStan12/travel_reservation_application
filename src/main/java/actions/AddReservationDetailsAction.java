@@ -5,7 +5,9 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import data.db_entities.Client;
 import data.db_entities.Employee;
+import data.db_entities.User;
 import domain.ReservationRepository;
+import domain.UserRepository;
 import org.apache.struts2.json.JSONWriter;
 import utils.Logger;
 import utils.LoggerTypes;
@@ -16,7 +18,7 @@ import java.util.*;
 public class AddReservationDetailsAction extends ActionSupport {
 
     List<String> offices;
-    List<String> owners;
+    List<User> owners;
 
     List<String> clientTypes;
     List<String> creditTypes;
@@ -32,6 +34,7 @@ public class AddReservationDetailsAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
         clientNames = ReservationRepository.getInstance().getClients();
+        owners = UserRepository.getInstance().getOwners();
         return SUCCESS;
     }
 
@@ -128,15 +131,7 @@ public class AddReservationDetailsAction extends ActionSupport {
         return offices;
     }
 
-    public List<String> getOwners() {
-        if (owners == null) {
-            owners = new ArrayList<>();
-            owners.add("Admin Administrator");
-            owners.add("Femi Jacob");
-            owners.add("Front Desk");
-            owners.add("Kayode Emmanuel");
-            owners.add("Kazeem Balogun");
-        }
+    public List<User> getOwners() {
         return owners;
     }
 

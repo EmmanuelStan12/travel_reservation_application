@@ -1,5 +1,6 @@
 .home {
     padding: 20px;
+    position: relative;
 }
 
 .form_details {
@@ -71,7 +72,8 @@ th p {
 }
 
 .list_entry {
-    background: #81ffff;
+    background: rgba(0, 89, 255, 0.3);
+    padding: 10px 0;
 }
 
 .list_entry td {
@@ -82,4 +84,46 @@ th p {
 .list_desc {
     font-size: 0.8rem;
     font-weight: normal;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 100;
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.cv-spinner {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px #ddd solid;
+    border-top: 4px #2e93e6 solid;
+    border-radius: 50%;
+    animation: sp-anime 0.8s infinite linear;
+}
+@keyframes sp-anime {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.anchor {
+    color: #2e93e6;
+    font-size: 0.7rem;
+    text-decoration: underline;
+    cursor: pointer;
 }

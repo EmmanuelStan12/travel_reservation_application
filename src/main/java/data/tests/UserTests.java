@@ -2,12 +2,14 @@ package data.tests;
 
 import data.dao.ClientEmployeeDao;
 import data.dao.PersonnelDao;
+import data.dao.TripDao;
 import data.dao.VehicleDao;
 import data.db_entities.*;
 import utils.Logger;
 import utils.LoggerTypes;
 
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -67,7 +69,12 @@ public class UserTests {
 //
 //        Logger.log(LoggerTypes.INFO, Arrays.toString(clients.toArray()));
 
-
+        var result = TripDao.getInstance().get(10, 0, "");
+        Logger.log(LoggerTypes.INFO, result.toString());
+        var result1 = TripDao.getInstance().get(10, result.getNextPage() - 1, "");
+        Logger.log(LoggerTypes.INFO, result1.toString());
+        var result2 = TripDao.getInstance().get(10, result1.getNextPage() - 1, "");
+        Logger.log(LoggerTypes.INFO, result2.toString());
 
     }
 }

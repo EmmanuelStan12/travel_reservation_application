@@ -16,6 +16,11 @@
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
           integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
           crossorigin="anonymous"></script>
+  <style>
+    .show {
+      display: none;
+    }
+  </style>
   <sx:head />
 </head>
 <body>
@@ -31,7 +36,7 @@
       </sx:tabbedpanel>
       <button class="btn_submit" type="button" id="add_reservation_btn">Submit</button>
     </div>
-    <div id="overlay">
+    <div class="overlay">
       <div class="cv-spinner">
         <span class="spinner"></span>
       </div>

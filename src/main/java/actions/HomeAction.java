@@ -1,18 +1,25 @@
 package actions;
 
+import com.google.gson.Gson;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import data.db_entities.Personnel;
-import data.db_entities.PersonnelType;
-import data.db_entities.User;
-import data.db_entities.VehicleType;
+import data.db_entities.*;
 import domain.ReservationRepository;
 import domain.UserRepository;
+import utils.Logger;
+import utils.LoggerTypes;
 import utils.Operator;
+import utils.QueryParser;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class HomeAction extends ActionSupport {
+
+    private static final Integer PAGE = 0;
+    private static final Integer PER_PAGE = 10;
 
     private List<String> offices;
 
@@ -22,6 +29,44 @@ public class HomeAction extends ActionSupport {
     private List<VehicleType> vehicleTypes;
 
     private List<PersonnelType> personnelTypes;
+
+    private String reservationJson;
+
+    public String getReservationJson() {
+        return reservationJson;
+    }
+
+    public void setReservationJson(String reservationJson) {
+        this.reservationJson = reservationJson;
+    }
+
+    public String loadReservations() {
+        Map<String, Object> map = ActionContext.getContext().getParameters();
+        Gson gson = new Gson();
+        Logger.log(LoggerTypes.INFO, map.toString());
+        String query = QueryParser.parse(map);
+
+        Integer pageCount = QueryParser.getPageCount(map);
+        Integer page = QueryParser.getPage(map);
+        Date date = QueryParser.getDate(map);
+        Operator operator = QueryParser.getOperator(map);
+
+        Logger.log(LoggerTypes.INFO, "Date - " + date + " Operator - " + operator);
+
+        Logger.log(LoggerTypes.INFO, "Page - " + page + ", count - " + pageCount);
+
+        if (date != null && operator != null) {
+            ReservationResult trips = ReservationRepository.getInstance().getTrips(pageCount, page, query, date, operator);
+            Logger.log(LoggerTypes.INFO, trips.toString());
+            this.reservationJson = gson.toJson(trips);
+            return SUCCESS;
+        }
+
+        ReservationResult trips = ReservationRepository.getInstance().getTrips(pageCount, page, query);
+        Logger.log(LoggerTypes.INFO, trips.toString());
+        this.reservationJson = gson.toJson(trips);
+        return SUCCESS;
+    }
 
     public List<PersonnelType> getPersonnelTypes() {
         return personnelTypes;

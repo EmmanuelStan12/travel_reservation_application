@@ -7,14 +7,26 @@
   Time: 8:08 PM
   To change this template use File | Settings | File Templates.
 --%>
-<s:form cssClass="form_details" theme="simple">
+<s:form id="form_details" cssClass="form_details" theme="simple">
     <div class="detail_entry">
         <label>Credit type</label>
-        <s:textfield id="credit_type" class="textfield" type="text" />
+        <select
+                name="creditType"
+                id="creditTypes"
+        >
+            <option value="-1">--Select Type--</option>
+            <option value="0">Credit Client</option>
+            <option value="1">Non Credit Client</option>
+        </select>
     </div>
     <div class="detail_entry">
-        <label>Client name</label>
-        <s:textfield id="client_name" class="textfield" type="text" />
+        <label>Client Type</label>
+        <select id="clientTypes"
+                name="clientType">
+            <option value="-1">--Select Type--</option>
+            <option value="0">Individual</option>
+            <option value="1">Company</option>
+        </select>
     </div>
     <div class="detail_entry">
         <label>Office</label>
@@ -34,7 +46,7 @@
                 headerValue="--Select Owner--"
                 list="owners"
                 id="owners"
-                listValue="firstname"
+                listValue="firstname + ' ' + lastname"
                 listKey="uid"
         />
     </div>
@@ -49,8 +61,8 @@
                 listKey="operator"
                 listValue="operator"
         />
-        <sx:datetimepicker displayFormat="dd-MMM-yyyy" type="date" id="start_date" />
-        <sx:datetimepicker displayFormat="dd-MMM-yyyy" id="end_date" type="date" />
+        <sx:datetimepicker name="date" displayFormat="yyyy-MM-dd" type="date" id="start_date" />
+        <sx:datetimepicker disabled="true" displayFormat="yyyy-MM-dd" id="end_date" type="date" />
     </div>
     <div class="detail_entry">
         <label>Vehicle Type</label>
@@ -101,10 +113,10 @@
         <s:select
                 headerKey="-1"
                 name="users"
-                headerValue="--Select Owner--"
+                headerValue="--Select--"
                 list="owners"
                 id="users"
-                listValue="firstname"
+                listValue="firstname + ' ' + lastname"
                 listKey="uid"
         />
     </div>
@@ -128,7 +140,7 @@
 <%--    </div>--%>
     <div class="detail_last_section" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
         <div class="detail_btns">
-            <button class="btn_submit" name="search" id="btn_search">Search</button>
+            <button type="button" class="btn_submit" name="search" id="btn_search">Search</button>
             <button id="btn_clear" type="reset" class="btn_submit" name="clear">Clear</button>
         </div>
         <div class="detail_rows">
