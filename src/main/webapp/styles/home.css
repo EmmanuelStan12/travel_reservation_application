@@ -127,3 +127,27 @@ th p {
     text-decoration: underline;
     cursor: pointer;
 }
+
+.btn_action {
+    padding: 10px 20px;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: transparent;
+    border-radius: 35px;
+    outline: none;
+    border: none;
+    height: fit-content;
+    cursor: pointer;
+    width: fit-content;
+}
+
+#btn_pdf {
+    color: #181818;
+    border: 2px solid #cb0000;
+}
+
+#btn_excel {
+    color: #181818;
+    border: 2px solid green;
+}
+

@@ -18,6 +18,7 @@ let currentResult = null;
 
 $(document).ready(function(){
     document.querySelector('.overlay').classList.add('show');
+    appendToDocs('perPage=10&page=1')
     $.ajax({ url: `loadReservations?perPage=10&page=1`,
         context: document.body,
         success: function(data){
@@ -35,6 +36,24 @@ $(document).ready(function(){
 
     registerOperatorChangeListener();
 });
+
+$('#btn_pdf_view').click(function () {
+    let action = $('#doc_generator').attr("action")
+    console.log("action", action);
+    let newAction = action.replace("generateReport", "viewPDF")
+    $('#doc_generator').attr("action", newAction);
+    console.log(newAction)
+    $('#doc_generator').submit();
+})
+
+$('#btn_excel_view').click(function () {
+    let action = $('#doc_generator').attr("action")
+    console.log("action", action);
+    let newAction = action.replace("generateReport", "viewExcel")
+    $('#doc_generator').attr("action", newAction);
+    console.log(newAction)
+    $('#doc_generator').submit();
+})
 
 function registerOperatorChangeListener() {
     $('#operators').change(function (event) {
@@ -59,6 +78,7 @@ $('#last').click(function () {
 
 function loadTrips(page) {
     const queries = getQueries().filter((query) => query.length !== 0).join('&') + `&page=${page}`;
+    appendToDocs(queries)
     document.querySelector('.overlay').classList.add('show');
     $.ajax({
         url: "loadReservations?" + queries,
@@ -94,6 +114,7 @@ $('#form_details').submit(function (event) {
 
 $('#btn_search').click(function () {
     const queries = getQueries().filter((query) => query.length !== 0).join('&') + '&page=1';
+    appendToDocs(queries)
     document.querySelector('.overlay').classList.add('show');
     $.ajax({
        url: "loadReservations?"+queries,
@@ -235,6 +256,13 @@ function createPage(page) {
     let color = p - 1 === page ? 'black' : 'blue';
     return `<span onclick="loadTrips(${page})" class="anchor" style="color: ${color};">${page}</span>`
 }
+
+function appendToDocs(query) {
+    $('#doc_generator').attr("action", "generateReport?"+query);
+    console.log($("#doc_generator").attr("action"))
+}
+
+//Submit for xml
 
 $('#vehicle_types').change(function (event) {
     const entry = event.target.value;

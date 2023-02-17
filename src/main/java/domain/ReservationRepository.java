@@ -70,7 +70,7 @@ public class ReservationRepository {
     }
 
     public ReservationResult getTrips(Integer perPage, Integer page, String query, Date date, Operator operator) {
-        ReservationResult result = TripDao.getInstance().get(perPage, page + 1, query,date, operator);
+        ReservationResult result = TripDao.getInstance().get(perPage, page - 1, query, date, operator);
         for (Trip trip: result.getTrips()) {
             trip.getDetail().setTrips(null);
             trip.getDetail().getUser().setDetails(null);

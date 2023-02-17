@@ -5,10 +5,14 @@ import data.dao.PersonnelDao;
 import data.dao.TripDao;
 import data.dao.VehicleDao;
 import data.db_entities.*;
+import jasper.FileType;
+import jasper.ReportService;
+import net.sf.jasperreports.engine.JRException;
 import utils.Logger;
 import utils.LoggerTypes;
 
 import java.lang.reflect.Array;
+import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,12 +73,23 @@ public class UserTests {
 //
 //        Logger.log(LoggerTypes.INFO, Arrays.toString(clients.toArray()));
 
-        var result = TripDao.getInstance().get(10, 0, "");
-        Logger.log(LoggerTypes.INFO, result.toString());
-        var result1 = TripDao.getInstance().get(10, result.getNextPage() - 1, "");
-        Logger.log(LoggerTypes.INFO, result1.toString());
-        var result2 = TripDao.getInstance().get(10, result1.getNextPage() - 1, "");
-        Logger.log(LoggerTypes.INFO, result2.toString());
+//        var result = TripDao.getInstance().get(10, 0, "");
+//        Logger.log(LoggerTypes.INFO, result.toString());
+//        var result1 = TripDao.getInstance().get(10, result.getNextPage() - 1, "");
+//        Logger.log(LoggerTypes.INFO, result1.toString());
+//        var result2 = TripDao.getInstance().get(10, result1.getNextPage() - 1, "");
+//        Logger.log(LoggerTypes.INFO, result2.toString());
+
+        ReservationResult results = TripDao.getInstance().get(
+                10, 1, ""
+        );
+        List<Report> reports = ReportService.resultToReport(results);
+        Logger.log(LoggerTypes.INFO, reports.toString());
+        try {
+            ReportService.exportReport("reservation_1", reports, FileType.EXCEL);
+        } catch (JRException | URISyntaxException e) {
+            e.printStackTrace();
+        }
 
     }
 }

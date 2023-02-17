@@ -88,6 +88,33 @@
             </result>
         </action>
 
+        <action name="generateReport" class="actions.ReportAction">
+            <result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${filename}.pdf"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+
+        <action name="viewPDF" class="actions.DocumentViewerAction">
+            <result name="success" type="stream">
+                <param name="contentType">application/pdf</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">inline;filename="reservation.pdf"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+
+        <action name="viewExcel" class="actions.DocumentViewerAction" method="displayExcelSheet">
+            <result type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelInputStream</param>
+                <param name="contentDisposition">inline;filename="reservation.xlsx"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+
     </package>
 
 <!--    <package name="json-package" extends="json-default">-->

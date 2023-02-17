@@ -1,5 +1,7 @@
 package utils;
 
+import jasper.FileType;
+
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,7 +23,9 @@ public class QueryParser {
             String key = iterator.next();
             String[] entry = (String[]) queries.get(key);
             if (Objects.equals(key, "perPage") || Objects.equals(key, "page")
-                    || Objects.equals(key, "operator") || Objects.equals(key, "startDate")) {
+                    || Objects.equals(key, "operator") || Objects.equals(key, "startDate")
+                    || Objects.equals(key, "file_type")
+            ) {
                 continue;
             }
             queryBuilder.append(key).append(" = '").append(entry[0]).append("'");
@@ -48,6 +52,13 @@ public class QueryParser {
         //Logger.log(LoggerTypes.INFO, "operator " + entry[0]);
         if (entry == null) return null;
         return Operator.getOperator(entry[0]);
+    }
+
+    public static FileType getFileType(Map<String, Object> queries) {
+        String[] entry = (String[]) queries.get("file_type");
+        //Logger.log(LoggerTypes.INFO, "operator " + entry[0]);
+        if (entry == null) throw new NullPointerException("File type is empty");
+        return FileType.findType(entry[0]);
     }
 
     public static Date getDate(Map<String, Object> queries) {

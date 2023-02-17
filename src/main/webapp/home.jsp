@@ -76,6 +76,12 @@
                 </tr>
                 </tbody>
             </table>
+            <form id="doc_generator" method="post" action="generateReport">
+                <button class="btn_action" name="file_type" value="pdf" id="btn_pdf">Download PDF</button>
+                <button class="btn_submit btn_save" id="btn_pdf_view">View PDF</button>
+                <button class="btn_action" name="file_type" value="excel" id="btn_excel">Excel</button>
+                <button class="btn_submit btn_save" id="btn_excel_view">View Excel</button>
+            </form>
         </div>
         <div class="overlay">
             <div class="cv-spinner">
@@ -84,6 +90,6 @@
         </div>
     </div>
 </main>
-<script src="js/h.js"></script>
+<script src="js/home.js"></script>
 </body>
 </html>

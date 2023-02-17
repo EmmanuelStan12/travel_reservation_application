@@ -1,5 +1,6 @@
 package actions;
 
+import actions.utils.ReservationUtil;
 import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -43,27 +44,7 @@ public class HomeAction extends ActionSupport {
     public String loadReservations() {
         Map<String, Object> map = ActionContext.getContext().getParameters();
         Gson gson = new Gson();
-        Logger.log(LoggerTypes.INFO, map.toString());
-        String query = QueryParser.parse(map);
-
-        Integer pageCount = QueryParser.getPageCount(map);
-        Integer page = QueryParser.getPage(map);
-        Date date = QueryParser.getDate(map);
-        Operator operator = QueryParser.getOperator(map);
-
-        Logger.log(LoggerTypes.INFO, "Date - " + date + " Operator - " + operator);
-
-        Logger.log(LoggerTypes.INFO, "Page - " + page + ", count - " + pageCount);
-
-        if (date != null && operator != null) {
-            ReservationResult trips = ReservationRepository.getInstance().getTrips(pageCount, page, query, date, operator);
-            Logger.log(LoggerTypes.INFO, trips.toString());
-            this.reservationJson = gson.toJson(trips);
-            return SUCCESS;
-        }
-
-        ReservationResult trips = ReservationRepository.getInstance().getTrips(pageCount, page, query);
-        Logger.log(LoggerTypes.INFO, trips.toString());
+        ReservationResult trips = ReservationUtil.loadResults(map);
         this.reservationJson = gson.toJson(trips);
         return SUCCESS;
     }
